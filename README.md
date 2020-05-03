@@ -14,12 +14,12 @@ It would be more useful to use this with other GitHub Actions' outputs.
 
 ## Inputs
 
-|      Name      |  Type  |                               Description                                | Required |                                     Default                                     |
-| -------------- | ------ | ------------------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------- |
-| `github_token` | string | A GitHub token.                                                          | `true`   | N/A                                                                             |
-| `body`         | string | A comment body to create.                                                | `true`   | N/A                                                                             |
-| `repo`         | string | The owner and repository name. e.g. `Codertocat/Hello-World`.            | `false`  | `${{ github.repository }}`                                                      |
-| `number`       | number | The number of the issue or pull request which has triggered this action. | `false`  | `${{ github.event.issue.number }}` or `${{ github.event.pull_request.number }}` |
+|      NAME      |                          DESCRIPTION                          |   TYPE   | REQUIRED |                                     DEFAULT                                     |
+| -------------- | ------------------------------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------- |
+| `github_token` | A GitHub token.                                               | `string` | `true`   | `N/A`                                                                           |
+| `body`         | The comment body.                                             | `string` | `true`   | `N/A`                                                                           |
+| `repo`         | The owner and repository name. e.g.) `Codertocat/Hello-World` | `string` | `false`  | `${{ github.repository }}`                                                      |
+| `number`       | The number of the issue or pull request.                      | `number` | `false`  | `${{ github.event.issue.number }}` or `${{ github.event.pull_request.number }}` |
 
 ## Example
 
