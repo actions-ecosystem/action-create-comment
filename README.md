@@ -2,6 +2,7 @@
 
 [![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
 [![release][release-badge]][release]
+[![license][license-badge]][license]
 
 ![screenshot](./docs/assets/screenshot.png)
 
@@ -54,3 +55,6 @@ Action Create Comment is released under the [Apache License 2.0](./LICENSE).
 
 [release]: https://github.com/actions-ecosystem/action-create-comment/releases
 [release-badge]: https://img.shields.io/github/v/release/actions-ecosystem/action-create-comment?style=for-the-badge&logo=github
+
+[license]: LICENSE
+[license-badge]: <https://img.shields.io/github/license/actions-ecosystem/action-add-labels?style=for-the-badge>
