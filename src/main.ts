@@ -1,34 +1,32 @@
+import * as github from '@actions/github';
 import * as core from '@actions/core';
-import { Processor, ProcessorOptions } from './Processor';
 
 async function run(): Promise<void> {
   try {
-    const args = await getAndValidateArgs();
-    const processor: Processor = new Processor(args);
+    const githubToken = core.getInput('github_token', { required: true });
+    const body = core.getInput('body', { required: true });
 
-    await processor.process();
-  } catch (error) {
-    core.error(error);
-    core.setFailed(error.message);
-  }
-}
+    const octokit = github.getOctokit(githubToken);
 
-async function getAndValidateArgs(): Promise<ProcessorOptions> {
-  try {
-    const args: ProcessorOptions = {
-      githubToken: core.getInput('github_token', { required: true }),
+    let { owner, repo } = github.context.repo;
+    if (core.getInput('repo')) {
+      [owner, repo] = core.getInput('repo').split('/');
+    }
 
-      body: core.getInput('body', { required: true }),
+    const number =
+      core.getInput('number') === ''
+        ? github.context.issue.number
+        : parseInt(core.getInput('number'));
 
-      owner: core.getInput('repo').split('/')[0],
-      repo: core.getInput('repo').split('/')[1],
-      number:
-        core.getInput('number') === '' ? 0 : parseInt(core.getInput('number'))
-    };
-
-    return args;
-  } catch (error) {
-    throw error;
+    await octokit.issues.createComment({
+      owner,
+      repo,
+      issue_number: number,
+      body
+    });
+  } catch (e) {
+    core.error(e);
+    core.setFailed(e.message);
   }
 }
 
