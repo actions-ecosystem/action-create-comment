@@ -9,7 +9,7 @@ async function run(): Promise<void> {
     const octokit = github.getOctokit(githubToken);
 
     let { owner, repo } = github.context.repo;
-    if (!owner || !repo) {
+    if (core.getInput('repo')) {
       [owner, repo] = core.getInput('repo').split('/');
     }
 

@@ -955,7 +955,7 @@ function run() {
             const body = core.getInput('body', { required: true });
             const octokit = github.getOctokit(githubToken);
             let { owner, repo } = github.context.repo;
-            if (!owner || !repo) {
+            if (core.getInput('repo')) {
                 [owner, repo] = core.getInput('repo').split('/');
             }
             const number = core.getInput('number') === ''
