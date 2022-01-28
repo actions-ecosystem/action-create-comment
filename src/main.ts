@@ -24,15 +24,17 @@ async function run(): Promise<void> {
         owner,
         repo,
         issue_number: number
-      })
-      const comment_ids = comments.filter(comment => comment.body.includes(deduplicate))
+      });
+      const comment_ids = comments.filter(comment =>
+        comment.body.includes(deduplicate)
+      );
       for (const comment_id of comment_ids) {
         await octokit.issues.deleteComment({
           owner,
           repo,
           issue_number: number,
-          comment_id,
-        })
+          comment_id
+        });
       }
     }
 
