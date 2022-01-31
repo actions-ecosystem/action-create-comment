@@ -1,4 +1,4 @@
-name: Actions Ecosystem Create Comment
+name: rodmatos/action-create-comment
 description: Create a comment to an issue or a pull request.
 author: The Actions Ecosystem Authors
 inputs:
