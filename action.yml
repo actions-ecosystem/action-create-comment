@@ -1,4 +1,4 @@
-name: rodmatos/action-create-comment
+name: Actions Ecosystem Create Comment
 description: Create a comment to an issue or a pull request.
 author: The Actions Ecosystem Authors
 inputs:
@@ -14,9 +14,6 @@ inputs:
     default: ${{ github.repository }}
   number:
     description: The number of the issue or pull request.
-    required: false
-  deduplicate:
-    description: Value to deduplicate comment
     required: false
 runs:
   using: node12
