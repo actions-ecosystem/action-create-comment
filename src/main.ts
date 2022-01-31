@@ -25,9 +25,11 @@ async function run(): Promise<void> {
         repo,
         issue_number: number
       });
-      const comment_ids = comments.filter(comment =>
+      core.info(`comments: ${comments.data}`)
+      const comment_ids = comments.data.filter(comment =>
         comment.body.includes(deduplicate)
-      );
+      ).map(comment => comment.id);
+      core.info(`comment_ids: ${comment_ids}`)
       for (const comment_id of comment_ids) {
         await octokit.issues.deleteComment({
           owner,
